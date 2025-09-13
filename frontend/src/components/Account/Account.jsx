@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./Account.css";
 import { useNavigate } from "react-router-dom";
+import { FiUser } from "react-icons/fi";
+
 
 const getInitials = (name) => {
   if (!name) return "";
@@ -12,10 +14,10 @@ const getInitials = (name) => {
 const Account = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({
-    name: "Rahul Sharma",
-    username: "rahul.saathi",
-    email: "rahul.sharma@example.com",
-    phone: "+91 98765 43210",
+    name: "John Doe",
+    username: "john.doe",
+    email: "john.joe@example.com",
+    phone: "+987653210",
     photo: null,
   });
   const fileInput = useRef();
@@ -61,9 +63,13 @@ const Account = () => {
           <a href="#" className="home-nav-link" onClick={e => {e.preventDefault(); navigate("/contact");}}>Contact</a>
         </div>
         <div className="home-navbar-right">
-          <span className="home-lang">EN</span>
-          <button className="home-login-btn">Log In</button>
-          <button className="home-signup-btn">Sign Up</button>
+          <div
+                                className="account-section"
+                                onClick={() => (window.location.href = "/account")}
+                              >
+                                <FiUser className="account-icon" />
+                                <span className="user-role">Auditor</span>
+                              </div>
         </div>
       </nav>
 
@@ -82,8 +88,8 @@ const Account = () => {
               )}
               <div className="account-avatar-upload">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                  <path d="M12 16v-8M8 12h8" stroke="#0645db" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="12" r="10" stroke="#0645db" strokeWidth="2" fill="none"/>
+                  <path d="M12 16v-8M8 12h8" stroke=" #FF9800" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="12" cy="12" r="10" stroke=" #FF9800" strokeWidth="2" fill="none"/>
                 </svg>
               </div>
             </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Contact.css";
+import { FiUser } from "react-icons/fi";
+
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -46,9 +48,13 @@ const Contact = () => {
           <a href="#" className="home-nav-link home-nav-link-active" onClick={goToContact}>Contact</a>
         </div>
         <div className="home-navbar-right">
-          <span className="home-lang">EN</span>
-          <button className="home-login-btn">Log In</button>
-          <button className="home-signup-btn">Sign Up</button>
+          <div
+                                className="account-section"
+                                onClick={() => (window.location.href = "/account")}
+                              >
+                                <FiUser className="account-icon" />
+                                <span className="user-role">Auditor</span>
+                              </div>
         </div>
       </nav>
 
@@ -118,7 +124,7 @@ const Contact = () => {
                   </span>
                   <div>
                     <div className="contact-info-label">Email Address</div>
-                    <div className="contact-info-value">support@portersaathi.com</div>
+                    <div className="contact-info-value">support@sprintovault.com</div>
                   </div>
                 </div>
                 <div className="contact-info-item">
@@ -137,7 +143,7 @@ const Contact = () => {
                   <div>
                     <div className="contact-info-label">Office Address</div>
                     <div className="contact-info-value">
-                      Porter Saathi Headquarters<br />
+                      Sprinto Vault Headquarters<br />
                       123 Innovation Drive<br />
                       Bengaluru, Karnataka 560001<br />
                       India
