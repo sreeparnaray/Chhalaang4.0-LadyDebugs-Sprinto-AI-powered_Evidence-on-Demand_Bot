@@ -1,15 +1,22 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template_string
 from flask_bcrypt import Bcrypt
 from config import Config
 from models import db, User
 from ibm_auth import get_ibm_access_token
 from jira_auth import fetch_jira_issues
+from local_file import read_and_format_file, send_data_to_api
+import requests
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.config.from_object(Config)
 
 db.init_app(app)
 bcrypt = Bcrypt(app)
+
+FILE_PATH = '/Users/aishwaryaasp/Downloads/DummyPdfData.pdf'
+API_URL = 'https://jsonplaceholder.typicode.com/posts'
 
 # Create tables if not exist
 with app.app_context():
@@ -52,36 +59,27 @@ def login():
 
     return jsonify({'error': 'Invalid username or password'}), 401
 
-@app.route('/watson-orchestrate', methods=['POST'])
+@app.route('/watson-orchestrate', methods=['GET'])
 def watson_orchestrate():
-    data = request.get_json()
-    user_input = data.get('input')
-
-    if not user_input:
-        return jsonify({'error': 'Input is required'}), 400
-
     try:
         access_token = get_ibm_access_token()
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-    url = f"{Config.WATSON_URL}/v1/your-endpoint"  # Replace with actual endpoint
+    url = f"{Config.WATSON_URL}/v1/orchestrate/digital-employees/allskills"  
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-Type': 'application/json'
     }
-    payload = {
-        'input': user_input,
-        'context': {}
-    }
 
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
+        print("Watson API response text:", response.text)
+        data = response.text
     except requests.exceptions.RequestException as e:
         return jsonify({'error': str(e)}), 500
-
-    return jsonify(response.json()), response.status_code
+    return data, 200, {'Content-Type': 'text/html'}
 
 @app.route('/jira/issues', methods=['GET'])
 def jira_issues_route():
@@ -92,6 +90,22 @@ def jira_issues_route():
         return jsonify({'issues': issues}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/process-file', methods=['GET'])
+def process_file():
+    try:
+        data = read_and_format_file(FILE_PATH)
+        results = send_data_to_api(data, API_URL)
+        return jsonify({
+            "success": True,
+            "message": "File processed and data sent to API.",
+            "data": results
+        })
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500
 
 
 
