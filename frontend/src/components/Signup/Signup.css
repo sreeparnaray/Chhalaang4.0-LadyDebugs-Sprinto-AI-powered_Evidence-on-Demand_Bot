@@ -1,0 +1,219 @@
+.signup-bg {
+  min-height: 100vh;
+  background: #f5f7fa;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.signup-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 600px;
+  gap: 32px;
+  justify-content: center;
+}
+
+.signup-left {
+  flex: 1.5;
+  background: #eef1fb;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 48px 24px 32px 24px;
+  margin-right: 0;
+  min-width: 500px;
+  max-width: 700px;
+  box-sizing: border-box;
+}
+
+.signup-logo {
+  height: 36px;
+  align-self: flex-start;
+  margin-bottom: 0;
+  margin-left: 8px;
+}
+
+.signup-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+  margin-top: 56px;
+  line-height: 1.1;
+  text-align: center;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-desc {
+  font-size: 1.13rem;
+  color: #444;
+  margin-bottom: 32px;
+  max-width: 480px;
+  text-align: center;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-hero-img {
+  margin-top: 0;
+  width: 340px;
+  max-width: 95%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.signup-right {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(6,69,219,0.06);
+  padding: 40px 36px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 370px;
+  max-width: 400px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.signup-form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 8px;
+  text-align: center;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-form-desc {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 24px;
+  text-align: center;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.signup-form label {
+  font-size: 0.97rem;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 2px;
+  margin-top: 10px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-form input {
+  border: 1px solid #e3e6f3;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  background: #fff;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-form input:focus {
+  border: 1.5px solid #0645db;
+}
+
+.signup-btn {
+  background: #0645db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 10px 0;
+  margin-top: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-btn:hover {
+  background: #003bb3;
+}
+
+.signup-or {
+  text-align: center;
+  color: #888;
+  margin: 18px 0 8px 0;
+  font-size: 1rem;
+  width: 100%;
+  border-bottom: 1px solid #e3e6f3;
+  line-height: 0.1em;
+  margin-top: 28px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.signup-or:before {
+  content: '';
+  display: inline-block;
+  width: 40%;
+  height: 1px;
+  background: #e3e6f3;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+.signup-or:after {
+  content: '';
+  display: inline-block;
+  width: 40%;
+  height: 1px;
+  background: #e3e6f3;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.signup-login-link {
+  text-align: center;
+  color: #444;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 8px;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.signup-link {
+  color: #0645db;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 2px;
+}
+
+.signup-link:hover {
+  color: #003bb3;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .signup-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .signup-left, .signup-right {
+    min-width: 320px;
+    max-width: 100%;
+    width: 100%;
+  }
+  .signup-left {
+    margin-bottom: 32px;
+  }
+}
